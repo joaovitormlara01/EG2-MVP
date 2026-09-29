@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="RotaClara — registro de paradas e acompanhamento de roteiros." />
+    <title>Entrar — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <script type="module" src="/js/paginas/login.js"></script>
+  </head>
+  <body>
+    <main class="pagina-login" id="conteudo">
+      <section class="cartao" aria-labelledby="titulo-login">
+        <p class="marca">RotaClara</p>
+        <p class="lema">Cada parada conta.</p>
+        <h1 id="titulo-login">Entrar</h1>
+
+        <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+        <form id="form-login" novalidate>
+          <div class="campo">
+            <label for="login">E-mail ou documento</label>
+            <input
+              id="login"
+              name="login"
+              type="text"
+              autocomplete="username"
+              autocapitalize="none"
+              spellcheck="false"
+              required
+              maxlength="254"
+              aria-describedby="login-ajuda login-erro"
+            />
+            <span id="login-ajuda" class="campo-ajuda">Motoristas podem usar o número do documento.</span>
+            <span id="login-erro" class="campo-erro"></span>
+          </div>
+
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <div class="campo-senha">
+              <input
+                id="senha"
+                name="senha"
+                type="password"
+                autocomplete="current-password"
+                required
+                maxlength="128"
+                aria-describedby="senha-erro"
+              />
+              <button
+                type="button"
+                class="botao botao-secundario"
+                id="alternar-senha"
+                aria-controls="senha"
+                aria-pressed="false"
+              >
+                Mostrar
+              </button>
+            </div>
+            <span id="senha-erro" class="campo-erro"></span>
+          </div>
+
+          <button type="submit" class="botao botao-primario botao-bloco">Entrar</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auditoria — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <script type="module" src="/js/paginas/auditoria.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <h1>Auditoria</h1>
+      <p class="campo-ajuda">
+        Registro imutável de alterações e acessos (RNF05, RNF06): usuário, data e hora, entidade,
+        operação e valores anterior e novo. Somente leitura.
+      </p>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+      <form id="form-filtros" class="secao cartao" novalidate>
+        <div class="grade-form">
+          <div class="campo">
+            <label for="entidade">Entidade</label>
+            <select id="entidade" name="entidade">
+              <option value="">Todas</option>
+              <option value="roteiro">Roteiro (inclui os pontos dele)</option>
+              <option value="roteiro_ponto">Ocorrência de ponto</option>
+              <option value="parametro_sistema">Parâmetros</option>
+              <option value="motorista">Motorista</option>
+              <option value="gerente">Gerente</option>
+              <option value="equipe">Equipe</option>
+              <option value="veiculo">Veículo</option>
+              <option value="ponto">Ponto</option>
+              <option value="relatorio">Exportação</option>
+              <option value="consulta">Consulta de dados pessoais</option>
+              <option value="sessao">Acesso (login/logout)</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="entidadeId">Identificador</label>
+            <input id="entidadeId" name="entidadeId" type="text" inputmode="numeric" pattern="[0-9/]+" aria-describedby="entidadeId-ajuda entidadeId-erro" />
+            <span id="entidadeId-ajuda" class="campo-ajuda">Ex.: 12 (roteiro) ou 12/2 (ponto 2 do roteiro 12).</span>
+            <span id="entidadeId-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="inicio">De</label>
+            <input id="inicio" name="inicio" type="date" aria-describedby="inicio-erro" />
+            <span id="inicio-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="fim">Até</label>
+            <input id="fim" name="fim" type="date" aria-describedby="fim-erro" />
+            <span id="fim-erro" class="campo-erro"></span>
+          </div>
+        </div>
+        <button type="submit" class="botao botao-primario">Consultar</button>
+      </form>
+
+      <section class="secao" aria-labelledby="titulo-registros">
+        <h2 id="titulo-registros">Registros</h2>
+        <div id="lista" aria-live="polite"></div>
+        <nav class="acoes" id="paginacao" aria-label="Paginação" hidden>
+          <button type="button" class="botao botao-secundario" id="anterior">Página anterior</button>
+          <span id="pagina-atual"></span>
+          <button type="button" class="botao botao-secundario" id="proxima">Próxima página</button>
+        </nav>
+      </section>
+    </main>
+  </body>
+</html>

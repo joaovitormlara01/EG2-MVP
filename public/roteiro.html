@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roteiro — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <script type="module" src="/js/paginas/roteiro.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <div class="cabecalho-pagina">
+        <h1 id="titulo-roteiro">Roteiro</h1>
+        <div class="acoes">
+          <span id="selo-situacao"></span>
+          <button type="button" class="botao botao-secundario botao-pequeno" id="atualizar">Atualizar</button>
+        </div>
+      </div>
+      <p><a id="voltar" href="/roteiros.html">← Voltar aos roteiros</a></p>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+      <div id="corpo" aria-live="polite"></div>
+    </main>
+  </body>
+</html>

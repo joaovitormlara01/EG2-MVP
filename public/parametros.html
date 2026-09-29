@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parâmetros — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <script type="module" src="/js/paginas/parametros.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <h1>Parâmetros do sistema</h1>
+      <p>
+        Jornada e valor do combustível são versionados. Uma nova versão vale a partir de hoje ou de uma
+        data futura e se aplica aos roteiros montados depois dela. Roteiros já montados mantêm a
+        versão e os valores gravados (histórico preservado). As regras de cálculo (RN01–RN10) não são
+        configuráveis.
+      </p>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+      <section class="secao" aria-labelledby="titulo-vigente">
+        <h2 id="titulo-vigente">Vigente hoje</h2>
+        <div id="vigente" aria-live="polite"></div>
+      </section>
+
+      <section class="secao cartao" aria-labelledby="titulo-form">
+        <h2 id="titulo-form">Nova versão</h2>
+        <form id="form-parametro" novalidate>
+          <div class="grade-form">
+            <div class="campo">
+              <label for="vigenteDesde">Vigente a partir de</label>
+              <input id="vigenteDesde" name="vigenteDesde" type="date" required aria-describedby="vigenteDesde-ajuda vigenteDesde-erro" />
+              <span id="vigenteDesde-ajuda" class="campo-ajuda">Hoje ou data futura, posterior à última versão.</span>
+              <span id="vigenteDesde-erro" class="campo-erro"></span>
+            </div>
+            <div class="campo">
+              <label for="jornadaMin">Jornada (minutos)</label>
+              <input id="jornadaMin" name="jornadaMin" type="number" min="1" max="1440" step="1" required aria-describedby="jornadaMin-ajuda jornadaMin-erro" />
+              <span id="jornadaMin-ajuda" class="campo-ajuda">Padrão inicial: 480 (8 h).</span>
+              <span id="jornadaMin-erro" class="campo-erro"></span>
+            </div>
+            <div class="campo">
+              <label for="valorCombustivel">Valor do combustível (R$/litro)</label>
+              <input id="valorCombustivel" name="valorCombustivel" type="text" inputmode="decimal"
+                pattern="\d{1,7}([.,]\d{1,3})?" aria-describedby="valorCombustivel-ajuda valorCombustivel-erro" />
+              <span id="valorCombustivel-ajuda" class="campo-ajuda">Ex.: 6,00. Em branco: custo "não disponível".</span>
+              <span id="valorCombustivel-erro" class="campo-erro"></span>
+            </div>
+          </div>
+          <button type="submit" class="botao botao-primario">Criar versão</button>
+        </form>
+      </section>
+
+      <section class="secao" aria-labelledby="titulo-versoes">
+        <h2 id="titulo-versoes">Histórico de versões</h2>
+        <div id="versoes" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>

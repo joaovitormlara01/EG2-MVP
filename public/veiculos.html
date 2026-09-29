@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Veículos — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <script type="module" src="/js/paginas/veiculos.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <h1>Veículos</h1>
+      <p>O rendimento é copiado para o roteiro na montagem; alterá-lo não muda roteiros já montados.</p>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+      <section class="secao cartao" aria-labelledby="titulo-form">
+        <h2 id="titulo-form">Novo veículo</h2>
+        <form id="form-cadastro" novalidate>
+          <div class="grade-form">
+          <div class="campo">
+            <label for="placa">Placa</label>
+            <input id="placa" name="placa" type="text" required maxlength="10" autocomplete="off" aria-describedby="placa-erro" />
+            <span id="placa-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="descricao">Descrição</label>
+            <input id="descricao" name="descricao" type="text" maxlength="100" aria-describedby="descricao-erro" />
+            <span id="descricao-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="rendimentoKmL">Rendimento (km/l)</label>
+            <input id="rendimentoKmL" name="rendimentoKmL" type="text" required inputmode="decimal" pattern="[0-9]{1,4}([.,][0-9]{1,2})?" aria-describedby="rendimentoKmL-ajuda rendimentoKmL-erro" />
+            <span id="rendimentoKmL-ajuda" class="campo-ajuda">Ex.: 12 ou 12,5</span>
+            <span id="rendimentoKmL-erro" class="campo-erro"></span>
+          </div>
+          </div>
+          <label class="campo-marcacao" id="campo-ativo" hidden>
+            <input type="checkbox" name="ativo" /> Ativo (desmarque para inativar; o histórico é mantido)
+          </label>
+          <div class="acoes">
+            <button type="submit" class="botao botao-primario">Cadastrar</button>
+            <button type="button" class="botao botao-secundario" id="cancelar-edicao" hidden>Cancelar edição</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="secao" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Cadastrados</h2>
+        <div id="lista" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>

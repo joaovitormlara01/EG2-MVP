@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Histórico — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <script type="module" src="/js/paginas/historico.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <h1>Histórico de paradas</h1>
+      <p class="campo-ajuda">
+        Filtra pela data do roteiro (intervalo inclusivo). Horários no fuso de
+        Brasília. Inclui roteiros em execução e encerrados; cancelados e ainda não iniciados ficam fora.
+      </p>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+      <form id="form-filtros" class="secao cartao" novalidate>
+        <div class="grade-form">
+          <div class="campo">
+            <label for="inicio">Data inicial</label>
+            <input id="inicio" name="inicio" type="date" required aria-describedby="inicio-erro" />
+            <span id="inicio-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="fim">Data final</label>
+            <input id="fim" name="fim" type="date" required aria-describedby="fim-erro" />
+            <span id="fim-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo" id="campo-motorista" hidden>
+            <label for="motoristaId">Motorista</label>
+            <select id="motoristaId" name="motoristaId" aria-describedby="motoristaId-erro"></select>
+            <span id="motoristaId-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo" id="campo-equipe" hidden>
+            <label for="equipeId">Equipe</label>
+            <select id="equipeId" name="equipeId" aria-describedby="equipeId-erro"></select>
+            <span id="equipeId-erro" class="campo-erro"></span>
+          </div>
+        </div>
+        <div class="acoes">
+          <button type="submit" class="botao botao-primario">Consultar</button>
+          <button type="button" class="botao botao-secundario" id="exportar" hidden>Exportar CSV (período completo)</button>
+        </div>
+      </form>
+
+      <section class="secao" aria-labelledby="titulo-totais">
+        <h2 id="titulo-totais">Totais do período</h2>
+        <div id="totais" aria-live="polite"></div>
+      </section>
+
+      <section class="secao" aria-labelledby="titulo-ocorrencias">
+        <h2 id="titulo-ocorrencias">Paradas</h2>
+        <div id="lista" aria-live="polite"></div>
+        <nav class="acoes" id="paginacao" aria-label="Paginação" hidden>
+          <button type="button" class="botao botao-secundario" id="anterior">Página anterior</button>
+          <span id="pagina-atual" aria-live="polite"></span>
+          <button type="button" class="botao botao-secundario" id="proxima">Próxima página</button>
+        </nav>
+      </section>
+    </main>
+  </body>
+</html>

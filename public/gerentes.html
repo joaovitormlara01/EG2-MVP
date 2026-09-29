@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerentes — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <script type="module" src="/js/paginas/gerentes.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <h1>Gerentes</h1>
+      <p>Gerentes e coordenadores. A equipe de cada gerente é definida na tela Equipes.</p>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+      <section class="secao cartao" aria-labelledby="titulo-form">
+        <h2 id="titulo-form">Novo gerente</h2>
+        <form id="form-cadastro" novalidate>
+          <div class="grade-form">
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" required maxlength="150" autocomplete="off" aria-describedby="nome-erro" />
+            <span id="nome-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" required maxlength="254" autocomplete="off" aria-describedby="email-erro" />
+            <span id="email-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" type="tel" maxlength="30" autocomplete="off" aria-describedby="telefone-erro" />
+            <span id="telefone-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="senha">Senha de acesso</label>
+            <input id="senha" name="senha" type="password" minlength="8" maxlength="128" autocomplete="new-password" aria-describedby="senha-ajuda senha-erro" />
+            <span id="senha-ajuda" class="campo-ajuda">Mínimo de 8 caracteres. Na edição, deixe em branco para manter a atual.</span>
+            <span id="senha-erro" class="campo-erro"></span>
+          </div>
+          </div>
+          <label class="campo-marcacao" id="campo-ativo" hidden>
+            <input type="checkbox" name="ativo" /> Ativo (desmarque para inativar; o histórico é mantido)
+          </label>
+          <div class="acoes">
+            <button type="submit" class="botao botao-primario">Cadastrar</button>
+            <button type="button" class="botao botao-secundario" id="cancelar-edicao" hidden>Cancelar edição</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="secao" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Cadastrados</h2>
+        <div id="lista" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>

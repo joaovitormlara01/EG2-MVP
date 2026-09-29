@@ -1,0 +1,132 @@
+/* Layout responsivo: cabeçalho, conteúdo, cartões. Pensado a partir de 360 px (RNF02). */
+
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-3);
+  padding: var(--espaco-3) var(--espaco-4);
+  background: var(--cor-primaria);
+  color: var(--cor-texto-primaria);
+}
+
+.marca {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+}
+
+.marca small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.cabecalho-usuario {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espaco-3);
+}
+
+.cabecalho-usuario .botao-secundario {
+  color: var(--cor-primaria);
+}
+
+.conteudo {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--espaco-6) var(--espaco-4);
+}
+
+.cartao {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-6) var(--espaco-4);
+}
+
+/* Tela de login */
+.pagina-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--espaco-4);
+}
+
+.pagina-login .cartao {
+  width: 100%;
+  max-width: 420px;
+}
+
+.pagina-login .marca {
+  color: var(--cor-primaria);
+  font-size: 1.75rem;
+  margin-bottom: var(--espaco-1);
+}
+
+.lema {
+  color: var(--cor-texto-suave);
+  margin-bottom: var(--espaco-6);
+}
+
+/* Lista de funções do perfil */
+.grade-funcoes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espaco-3);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.grade-funcoes li {
+  padding: var(--espaco-4);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.grade-funcoes li:has(a) {
+  padding: 0;
+}
+
+.grade-funcoes a {
+  display: block;
+  padding: var(--espaco-4);
+  font-weight: 700;
+  font-size: 1.125rem;
+  min-height: 44px;
+}
+
+.grade-funcoes .situacao {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--cor-texto-suave);
+}
+
+.carregando {
+  color: var(--cor-texto-suave);
+}
+
+@media (min-width: 600px) {
+  .grade-funcoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cartao {
+    padding: var(--espaco-8);
+  }
+}
+
+@media (min-width: 960px) {
+  .grade-funcoes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <link rel="modulepreload" href="/js/api.js" />
+    <link rel="modulepreload" href="/js/consultas.js" />
+    <link rel="modulepreload" href="/js/dom.js" />
+    <link rel="modulepreload" href="/js/formatacao.js" />
+    <link rel="modulepreload" href="/js/layout.js" />
+    <link rel="modulepreload" href="/js/ui.js" />
+    <link rel="modulepreload" href="/js/sessao.js" />
+    <link rel="modulepreload" href="/js/rotulos.js" />
+    <script type="module" src="/js/paginas/dashboard.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <h1>Dashboard</h1>
+      <p class="campo-ajuda">
+        Indicadores calculados no servidor a partir dos roteiros em execução e encerrados (cancelados
+        não entram). Roteiros em execução contam com o total parcial e são sinalizados.
+      </p>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+      <form id="form-filtros" class="secao cartao" novalidate>
+        <fieldset>
+          <legend>Recorte</legend>
+          <div class="acoes" role="radiogroup">
+            <label class="campo-marcacao"><input type="radio" name="recorte" value="dia" checked /> Por dia</label>
+            <label class="campo-marcacao"><input type="radio" name="recorte" value="mes" /> Por mês</label>
+            <label class="campo-marcacao"><input type="radio" name="recorte" value="periodo" /> Período inteiro</label>
+          </div>
+        </fieldset>
+        <div class="grade-form">
+          <div class="campo">
+            <label for="inicio">Data inicial</label>
+            <input id="inicio" name="inicio" type="date" required aria-describedby="inicio-erro" />
+            <span id="inicio-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo">
+            <label for="fim">Data final</label>
+            <input id="fim" name="fim" type="date" required aria-describedby="fim-erro" />
+            <span id="fim-erro" class="campo-erro"></span>
+          </div>
+          <div class="campo" id="campo-motorista" hidden>
+            <label for="motoristaId">Motorista</label>
+            <select id="motoristaId" name="motoristaId"></select>
+          </div>
+          <div class="campo" id="campo-equipe" hidden>
+            <label for="equipeId">Equipe</label>
+            <select id="equipeId" name="equipeId"></select>
+          </div>
+        </div>
+        <button type="submit" class="botao botao-primario">Atualizar</button>
+      </form>
+
+      <section class="secao" aria-labelledby="titulo-totais">
+        <h2 id="titulo-totais">Totais do período</h2>
+        <div id="totais" aria-live="polite"></div>
+      </section>
+
+      <section class="secao" aria-labelledby="titulo-graficos">
+        <h2 id="titulo-graficos">Gráficos</h2>
+        <div id="estado-graficos"></div>
+        <div class="graficos" id="graficos" hidden>
+          <figure class="cartao">
+            <figcaption id="legenda-tempo">Tempo parado (minutos)</figcaption>
+            <div class="grafico"><canvas id="grafico-tempo" role="img" aria-labelledby="legenda-tempo"></canvas></div>
+          </figure>
+          <figure class="cartao">
+            <figcaption id="legenda-percentual">% da jornada (base: dias de motorista com roteiro)</figcaption>
+            <div class="grafico"><canvas id="grafico-percentual" role="img" aria-labelledby="legenda-percentual"></canvas></div>
+          </figure>
+          <figure class="cartao">
+            <figcaption id="legenda-custo">Custo estimado de combustível (R$) — só roteiros com custo disponível</figcaption>
+            <div class="grafico"><canvas id="grafico-custo" role="img" aria-labelledby="legenda-custo"></canvas></div>
+          </figure>
+        </div>
+        <div id="tabela-series"></div>
+      </section>
+
+      <section class="secao" aria-labelledby="titulo-maiores">
+        <h2 id="titulo-maiores">Maiores paradas</h2>
+        <div id="maiores" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>

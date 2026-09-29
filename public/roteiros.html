@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roteiros — RotaClara</title>
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/componentes.css" />
+    <script type="module" src="/js/paginas/roteiros.js"></script>
+  </head>
+  <body>
+    <a class="link-pular" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho">
+      <a class="marca" href="/inicio.html">RotaClara <small>Cada parada conta.</small></a>
+      <div class="cabecalho-usuario">
+        <span id="usuario-atual"></span>
+        <button type="button" class="botao botao-secundario" id="botao-sair">Sair</button>
+      </div>
+      <nav class="navegacao" id="navegacao" aria-label="Principal"></nav>
+    </header>
+
+    <main class="conteudo" id="conteudo" tabindex="-1">
+      <h1 id="titulo-pagina">Roteiros</h1>
+      <div id="mensagem" class="alerta" role="alert" aria-live="assertive"></div>
+
+      <section class="secao" aria-labelledby="titulo-lista">
+        <div class="cabecalho-pagina">
+          <h2 id="titulo-lista">Roteiros do dia</h2>
+          <form id="form-filtro" class="acoes" novalidate>
+            <label for="filtro-data" class="visualmente-oculto">Data</label>
+            <input id="filtro-data" name="data" type="date" required class="campo-data" />
+            <button type="submit" class="botao botao-secundario">Consultar</button>
+          </form>
+        </div>
+        <div id="lista" aria-live="polite"></div>
+      </section>
+
+      <section class="secao cartao" id="secao-montagem" aria-labelledby="titulo-montagem" hidden>
+        <h2 id="titulo-montagem">Montar roteiro</h2>
+        <form id="form-roteiro" novalidate>
+          <div class="grade-form">
+            <div class="campo">
+              <label for="motoristaId">Motorista</label>
+              <select id="motoristaId" name="motoristaId" required aria-describedby="motoristaId-erro"></select>
+              <span id="motoristaId-erro" class="campo-erro"></span>
+            </div>
+            <div class="campo">
+              <label for="data">Data do roteiro</label>
+              <input id="data" name="data" type="date" required aria-describedby="data-erro" />
+              <span id="data-erro" class="campo-erro"></span>
+            </div>
+            <div class="campo">
+              <label for="veiculoId">Veículo</label>
+              <select id="veiculoId" name="veiculoId" aria-describedby="veiculoId-ajuda veiculoId-erro"></select>
+              <span id="veiculoId-ajuda" class="campo-ajuda">Obrigatório (D05). Em branco, usa o veículo atribuído ao motorista.</span>
+              <span id="veiculoId-erro" class="campo-erro"></span>
+            </div>
+            <div class="campo">
+              <label for="distanciaKm">Distância total (km)</label>
+              <input id="distanciaKm" name="distanciaKm" type="text" inputmode="decimal"
+                pattern="\d{1,7}([.,]\d{1,2})?" aria-describedby="distanciaKm-ajuda distanciaKm-erro" />
+              <span id="distanciaKm-ajuda" class="campo-ajuda">Informada manualmente (não é calculada). Pode ser preenchida depois.</span>
+              <span id="distanciaKm-erro" class="campo-erro"></span>
+            </div>
+          </div>
+
+          <div id="aviso-dia" class="alerta" role="status" aria-live="polite"></div>
+
+          <fieldset>
+            <legend>Pontos em ordem de visita</legend>
+            <div class="acoes">
+              <label for="seletor-ponto" class="visualmente-oculto">Ponto a adicionar</label>
+              <select id="seletor-ponto" class="campo-select-ponto"></select>
+              <button type="button" class="botao botao-secundario" id="adicionar-ponto">Adicionar ponto</button>
+            </div>
+            <p class="campo-ajuda">O primeiro ponto é a partida e não conta no tempo parado. Mínimo de 2 pontos.</p>
+            <ol class="lista-ordenada" id="pontos-escolhidos" aria-live="polite"></ol>
+            <span id="pontoIds-erro" class="campo-erro"></span>
+          </fieldset>
+
+          <button type="submit" class="botao botao-primario">Montar roteiro</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

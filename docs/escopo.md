@@ -48,16 +48,16 @@ estimar o custo de combustível do roteiro (ER p.1; PP p.3).
 
 Referenciadas em `rastreabilidade.md`.
 
-| Etapa | Conteúdo |
-|---|---|
-| I1 | Requisitos (este documento, rastreabilidade, decisões) |
-| I2 | Arquitetura (`arquitetura.md`) |
-| I3 | Fundação executável: estrutura, banco de dev, health check, testes e lint |
-| I4 | Autenticação, perfis, equipes, auditoria base |
-| I5 | Cadastros: motoristas/veículos, gerentes, pontos |
-| I6 | Montagem de roteiro (ordem, partida, estados) |
-| I7 | Coleta de chegada/saída, cálculos de tempo, encerramento, correções auditadas |
-| I8 | Parâmetros versionados e custo estimado |
-| I9 | Histórico e dashboard (dia, mês, período) |
-| I10 | Exportação de relatório |
-| I11 | Verificação final: desempenho (12 meses < 3 s), LGPD, CT01–CT10 |
+| Etapa | Conteúdo | Situação |
+|---|---|---|
+| I1 | Requisitos (este documento, rastreabilidade, decisões) | Concluída |
+| I2 | Arquitetura (`arquitetura.md`) | Concluída (stack T01) |
+| I3 | Fundação executável: estrutura, banco de dev, health check, testes e lint | Concluída |
+| I4 | Autenticação, perfis, equipes, auditoria base | Concluída (login/sessão, perfis, política de acesso, escopo por equipe, auditoria de acesso; esquema completo do banco). Cadastro de equipes via tela/API fica com I5 |
+| I5 | Cadastros: motoristas/veículos, gerentes, pontos | Concluída (API + telas; equipes mínimas) |
+| I6 | Montagem de roteiro (ordem, partida, estados) | Concluída |
+| I7 | Coleta de chegada/saída, cálculos de tempo, encerramento, correções auditadas | Concluída (tela de coleta responsiva) |
+| I8 | Parâmetros versionados e custo estimado | Concluída (tela só do admin) |
+| I9 | Histórico e dashboard (dia, mês, período) | Concluída |
+| I10 | Exportação de relatório | Concluída (CSV) |
+| I11 | Verificação final: desempenho (12 meses < 3 s), LGPD, CT01–CT10 | Concluída — ver `relatorio-aceite.md` (retenção LGPD pendente, D17) |

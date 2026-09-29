@@ -1,0 +1,228 @@
+/* Base: tokens, reset, tipografia, formulários, botões e alertas. */
+
+:root {
+  --cor-fundo: #f4f6f8;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1b2430;
+  --cor-texto-suave: #4f5b69;
+  --cor-borda: #c9d1da;
+  --cor-primaria: #0f5ea8;
+  --cor-primaria-escura: #0b4a85;
+  --cor-texto-primaria: #ffffff;
+  --cor-foco: #f2a900;
+  --cor-erro: #b3261e;
+  --cor-erro-fundo: #fdecea;
+  --cor-sucesso: #1e6b34;
+  --cor-sucesso-fundo: #e7f4ea;
+  --cor-info-fundo: #e8f1fb;
+
+  --raio: 8px;
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 0.75rem;
+  --espaco-4: 1rem;
+  --espaco-6: 1.5rem;
+  --espaco-8: 2rem;
+
+  --fonte: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin: 0 0 var(--espaco-4);
+}
+
+p {
+  margin: 0 0 var(--espaco-4);
+}
+
+a {
+  color: var(--cor-primaria);
+}
+
+:focus-visible {
+  outline: 3px solid var(--cor-foco);
+  outline-offset: 2px;
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.link-pular {
+  position: absolute;
+  left: var(--espaco-2);
+  top: -3rem;
+  padding: var(--espaco-2) var(--espaco-4);
+  background: var(--cor-superficie);
+  border-radius: var(--raio);
+  z-index: 10;
+}
+
+.link-pular:focus {
+  top: var(--espaco-2);
+}
+
+/* Formulários */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-1);
+  margin-bottom: var(--espaco-4);
+}
+
+.campo label {
+  font-weight: 600;
+}
+
+.campo input {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--espaco-2) var(--espaco-3);
+  font: inherit;
+  color: inherit;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.campo input[aria-invalid='true'] {
+  border-color: var(--cor-erro);
+  border-width: 2px;
+}
+
+.campo-ajuda,
+.campo-erro {
+  font-size: 0.875rem;
+}
+
+.campo-ajuda {
+  color: var(--cor-texto-suave);
+}
+
+.campo-erro {
+  color: var(--cor-erro);
+  font-weight: 600;
+}
+
+.campo-erro:empty {
+  display: none;
+}
+
+.campo-senha {
+  display: flex;
+  gap: var(--espaco-2);
+}
+
+.campo-senha input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Botões */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-2);
+  min-height: 44px;
+  padding: var(--espaco-2) var(--espaco-4);
+  font: inherit;
+  font-weight: 600;
+  border-radius: var(--raio);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.botao:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
+.botao-primario {
+  color: var(--cor-texto-primaria);
+  background: var(--cor-primaria);
+}
+
+.botao-primario:hover:not(:disabled) {
+  background: var(--cor-primaria-escura);
+}
+
+.botao-secundario {
+  color: var(--cor-primaria);
+  background: var(--cor-superficie);
+  border-color: var(--cor-primaria);
+}
+
+.botao-bloco {
+  width: 100%;
+}
+
+/* Alertas */
+.alerta {
+  padding: var(--espaco-3) var(--espaco-4);
+  border-radius: var(--raio);
+  border-left: 4px solid;
+  margin-bottom: var(--espaco-4);
+}
+
+.alerta:empty {
+  display: none;
+}
+
+.alerta-erro {
+  color: var(--cor-erro);
+  background: var(--cor-erro-fundo);
+  border-color: var(--cor-erro);
+}
+
+.alerta-sucesso {
+  color: var(--cor-sucesso);
+  background: var(--cor-sucesso-fundo);
+  border-color: var(--cor-sucesso);
+}
+
+.alerta-info {
+  color: var(--cor-texto);
+  background: var(--cor-info-fundo);
+  border-color: var(--cor-primaria);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
